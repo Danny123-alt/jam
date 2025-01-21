@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
+    <title>JamStream</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 16;
+            background-color: darkkhaki;
+            color: #333;
+        }
+
+        header {
+            background-color: antiquewhite;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+
+        header nav a.active {
+            text-decoration: underline;
+            color: #ff4500;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('hero-image.jpg') no-repeat center center/cover ;
+                 color: #fff; 
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .hero button:hover {
+            background-color: #ff6347;
+        }
+
+        .latest-post,
+        .trending-music {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .latest-post h2,
+        .trending-music h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .post-container,
+        .track-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .post,
+        .trck {
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0 .1 );
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #ccb3b3;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        footer .social-icons a:hover {
+            color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">JamStream</div>
+        <nav>
+            <a href="#Home" class="nav-link active">Home</a>
+            <a href="#About" class="nav-link">About Us</a>
+            <a href="#Blog" class="nav-link">Blog</a>
+            <a href="#Music" class="nav-link">Music</a>
+            <a href="#Contact" class="nav-link">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to JamStream</h1>
+        <p>Your go-to platform for music and entertainment</p>
+        <button id="explore-btn">Explore Now</button>
+    </section>
+
+    <section id="blog" class="latest-post">
+        <h2>latest-post</h2>
+        <div class="post-container"id="post-container">
+        </div>
+    </section> 
+
+    <section id="music" class="trending-music">
+        <h2>Trending Music</h2>
+        <div class="track-container"id="track-container">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 JamStream. All right reserve.</p>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('explore-btn').addEventListener('click', () => {
+
+        document.getElementById('blog').scrollIntoView({ behavior: 'smoot' })
+                               });
+
+                     const navlink =
+        document.querySelectorAll('.nav-link') ;
+                navlink.forEach(link => {
+                    link.addEventListener('click', () => {                                                         
+                        navlink.forEach(link => 
+                        link.classlist.add('active'))
+                    });
+                }) ;
+                
+                const post =[
+                    {
+                        title: "Top 10 MusicTrend",
+                        description: "Discover the hottest music trend of the year!",
+                        image: "post1.jpg"              
+                    },
+                    {
+                        title: "Artist Spotlight: Rising Stars",
+                        description: "Meet the upcoming artists making waves in the industry.",
+                        image: "post3.jpg"
+                    }
+                ];
+
+                const track = [
+                    {title: "Hit Song 1", artist:"star singer", image: "track1.jpg" },
+                    {title: "Hit Song 2", artist:"Rising star", image: "track2.jpg" },
+                    {title: "Hit Song 3", artist:"Famous Band", image: "track3.jpg" },
+                ];
+
+                const postsContainer =
+        document.getElementById('post-container') ;
+                const trackcontainer =
+        document.getElementById('track-container');
+
+        posts.forEach(post => {
+            postsContainer.innerHTML += `
+                <div class="post">
+                    <img src="${post.image}" alt="${post.title}">
+                    <h3>${post.title}</h3>
+                    <p>${post.description}</p>
+                </div>
+            `;
+
+            });
+    </script> 
+    
+    
+<section id="player" class="music-player">
+    <h2>Now Playing</h2>
+    <div class="player-container">
+        <img id="cover" src="track1.jpg" alt="Album Cover">
+        <div class="song-info">
+            <h3 id="title">Hit Song 1</h3>
+            <p id="artist">Star Singer</p>
+        </div>
+        <audio id="audio" src="song1.mp3"></audio>
+        <div class="controls">
+            <button id="prev">⏮️</button>
+            <button id="play">▶️</button>
+            <button id="next">⏭️</button>
+        </div>
+        <div class="progress-container">
+            <span id="current-time">0:00</span>
+            <input id="progress-bar" type="range" value="0" max="100">
+            <span id="duration">0:00</span>
+        </div>
+        <div class="extra-controls">
+            <button id="shuffle">🔀</button>
+            <button id="repeat">🔁</button>
+            <input id="volume" type="range" min="0" max="1" step="0.1" value="1">
+            <button id="theme-toggle">🌙</button>
+        </div>
+    </div>
+    <!-- Upload and Playlist Section -->
+    <div class="upload-section">
+        <h3>Upload Your Song</h3>
+        <input id="song-upload" type="file" accept="audio/*">
+    </div>
+    <div class="playlist-section">
+        <h3>Your Playlist</h3>
+        <ul id="playlist">
+            <!-- Songs will be dynamically added here -->
+        </ul>
+        <button id="save-playlist">Save Playlist</button>
+    </div>
+</section>
+<style>
+    .upload-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .upload-section input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 70%;
+        margin-bottom: 15px;
+    }
+    .playlist-section {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .playlist-section button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .playlist-section button:hover {
+        background: #0056b3;
+    }
+</style>
+<script>
+    let songs = [
+        { title: "Hit Song 1", artist: "Star Singer", cover: "track1.jpg", src: "song1.mp3" },
+        { title: "Hit Song 2", artist: "Rising Star", cover: "track2.jpg", src: "song2.mp3" },
+        { title: "Hit Song 3", artist: "Famous Band", cover: "track3.jpg", src: "song3.mp3" },
+    ];
+    const playlistContainer = document.getElementById("playlist");
+    const songUpload = document.getElementById("song-upload");
+    const savePlaylistButton = document.getElementById("save-playlist");
+    function updatePlaylist() {
+        playlistContainer.innerHTML = songs.map(
+            (song, index) =>
+                `<li data-index="${index}">${song.title} - ${song.artist}</li>`
+        ).join("");
+    }
+    function addSongToPlaylist(songFile) {
+        const songURL = URL.createObjectURL(songFile);
+        const songTitle = songFile.name.split(".")[0];
+        songs.push({
+            title: songTitle,
+            artist: "Unknown Artist",
+            cover: "default-cover.jpg", // Default cover image
+            src: songURL,
+        });
+        updatePlaylist();
+    }
+    function savePlaylist() {
+        localStorage.setItem("playlist", JSON.stringify(songs));
+        alert("Playlist saved successfully!");
+    }
+    function loadSavedPlaylist() {
+        const savedPlaylist = JSON.parse(localStorage.getItem("playlist"));
+        if (savedPlaylist) {
+            songs = savedPlaylist;
+            updatePlaylist();
+        }
+    }
+    // Event Listeners
+    songUpload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) addSongToPlaylist(file);
+    });
+    savePlaylistButton.addEventListener("click", savePlaylist);
+    // Load the saved playlist on page load
+    window.addEventListener("load", loadSavedPlaylist);
+    updatePlaylist();
+</script>
+
+<section id="auth-section">
+    <h2>User Authentication</h2>
+    <div id="auth-forms">
+        <!-- Registration Form -->
+        <div id="register-form">
+            <h3>Register</h3>
+            <input type="text" id="reg-username" placeholder="Username" required>
+            <input type="password" id="reg-password" placeholder="Password" required>
+            <button id="register-btn">Register</button>
+        </div>
+        <!-- Login Form -->
+        <div id="login-form" style="display: none;">
+            <h3>Login</h3>
+            <input type="text" id="login-username" placeholder="Username" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button id="login-btn">Login</button>
+        </div>
+    </div>
+    <button id="logout-btn" style="display: none;">Logout</button>
+</section>
+<style>
+    #auth-section {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    #auth-forms input {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 80%;
+    }
+    #auth-forms button {
+        margin: 10px auto;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #auth-forms button:hover {
+        background: #0056b3;
+    }
+</style>
+<script>
+    const registerForm = document.getElementById("register-form");
+    const loginForm = document.getElementById("login-form");
+    const logoutBtn = document.getElementById("logout-btn");
+    // Register
+    document.getElementById("register-btn").addEventListener("click", () => {
+        const username = document.getElementById("reg-username").value;
+        const password = document.getElementById("reg-password").value;
+        if (username && password) {
+            localStorage.setItem(username, password);
+            alert("Registration successful!");
+            registerForm.style.display = "none";
+            loginForm.style.display = "block";
+        } else {
+            alert("Please fill in all fields.");
+        }
+    });
+    // Login
+    document.getElementById("login-btn").addEventListener("click", () => {
+        const username = document.getElementById("login-username").value;
+        const password = document.getElementById("login-password").value;
+        if (localStorage.getItem(username) === password) {
+            alert("Login successful!");
+            loginForm.style.display = "none";
+            logoutBtn.style.display = "block";
+        } else {
+            alert("Invalid username or password.");
+        }
+    });
+    // Logout
+    logoutBtn.addEventListener("click", () => {
+        alert("You have been logged out.");
+        logoutBtn.style.display = "none";
+        registerForm.style.display = "block";
+    });
+</script>
+
+<section id="subscription">
+    <h2>Subscription</h2>
+    <div>
+        <button id="subscribe-btn">Subscribe to Premium</button>
+    </div>
+    <p id="premium-status" style="margin-top: 10px;">You are a free user.</p>
+</section>
+<script>
+    const subscribeBtn = document.getElementById("subscribe-btn");
+    const premiumStatus = document.getElementById("premium-status");
+    // Check if user is premium
+    function checkPremiumStatus() {
+        if (localStorage.getItem("isPremium") === "true") {
+            premiumStatus.textContent = "You are a premium user. Enjoy exclusive features!";
+            subscribeBtn.style.display = "none";
+        }
+    }
+    // Subscribe to premium
+    subscribeBtn.addEventListener("click", () => {
+        localStorage.setItem("isPremium", "true");
+        alert("You are now a premium user!");
+        checkPremiumStatus();
+    });
+    // Run on page load
+    checkPremiumStatus();
+</script>
+</body>
+</html> 
